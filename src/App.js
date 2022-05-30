@@ -1,39 +1,18 @@
-import React,{ useState } from 'react';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import FeaturedProducts from './FeaturedProducts';
-import { Navbar,Container,Nav } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Product from './Product';
+import './App.css';
 function App() {
-return (
-
-  <>
-    <div>
-        <Navbar bg="dark" variant="dark">
-        <Container>
-        <Navbar.Brand href="#home">Home</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Men</Nav.Link>
-          <Nav.Link href="#features">Women</Nav.Link>
-          <Nav.Link href="#pricing">Kids</Nav.Link>
-        </Nav>
-        <Nav className="justify-content-end">
-          <Nav.Link href="#home">LogOut</Nav.Link>
-          <Nav.Link href="#features">Cart</Nav.Link>
-        </Nav>
-        </Container>
-      </Navbar>
-    </div>
-
-    <div className='App'>
+  return (
+    <Router>
       <div>
-           <br /><br /><br />
+        <Routes>
+          <Route path='/' element={<FeaturedProducts/>} />
+          <Route path='/product/:id' element={<Product/>} />
+        </Routes>
       </div>
-      <FeaturedProducts />
-    </div>
-
-    </>
-);
+    </Router>
+  );
 }
-
 export default App;
